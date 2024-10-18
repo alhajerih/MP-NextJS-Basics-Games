@@ -1,6 +1,34 @@
+"use client";
 import AgeCounter from "./components/AgeCounter.js";
+import CurrencyCounter from "./components/CurrencyCounter.js";
+import { useState } from "react";
 
 export default function Home() {
+  // States for the age and net worth (currency)
+  const [monthsCounter, setMonthsCounter] = useState(0);
+  const [netWorth, setNetWorth] = useState(0);
+
+  // Handle button click to increment age
+  const handleAgeIncrement = () => {
+    if (monthsCounter <= 1020) {
+      setMonthsCounter(monthsCounter + 1); // Increment by one month per click
+      handleNetWorth();
+    }
+  };
+
+  // Handles changing currency based on age and other conditions
+  function handleNetWorth() {
+    setNetWorth(netWorth + 10);
+    if (monthsCounter === 180) {
+      //15 years in months
+      setNetWorth(netWorth + 200);
+    }
+    if (monthsCounter === 660) {
+      //55 years in months
+      setNetWorth(netWorth + 100000);
+    }
+  }
+
   return (
     <>
       <div>
@@ -13,9 +41,13 @@ export default function Home() {
           add to my life?{String.fromCodePoint(0x1f914)}
         </h2>
         <div>
-          <AgeCounter />
+          <AgeCounter
+            monthsCounter={monthsCounter}
+            handleAgeIncrement={handleAgeIncrement}
+          />
         </div>
         <div className="currancy-logo">
+          <CurrencyCounter netWorth={netWorth} />
           <img
             style={{ width: 100, height: 100 }} // or any inline style you want to use
             src="https://i.postimg.cc/X70jRyWN/coins-1.png"

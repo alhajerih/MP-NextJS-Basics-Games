@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 
-export default function AgeCounter() {
-  const [monthsCounter, setMonthsCounter] = useState(0);
+export default function AgeCounter({monthsCounter, handleAgeIncrement}) {
+//   // States for the age and net worth (currency)
+//   const [monthsCounter, setMonthsCounter] = useState(0);
 
-  // Handle button click to increment age
-  const handleAgeIncrement = () => {
-    setMonthsCounter(monthsCounter + 1); // Increment by one month per click
-  };
+//   // Handle button click to increment age
+//   const handleAgeIncrement = () => {
+//     setMonthsCounter(monthsCounter + 1); // Increment by one month per click
+//   };
 
   // Calculate years and months from total months
   const years = Math.floor(monthsCounter / 12);
