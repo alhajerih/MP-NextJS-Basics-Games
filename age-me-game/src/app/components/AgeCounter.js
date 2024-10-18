@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import codeyImages from "../data/codeyImages";
 
-export default function AgeCounter({monthsCounter, handleAgeIncrement}) {
+export default function AgeCounter({monthsCounter, handleAgeIncrement, handleCodeyImage, codeyImages}) {
 //   // States for the age and net worth (currency)
 //   const [monthsCounter, setMonthsCounter] = useState(0);
 
@@ -22,7 +23,7 @@ export default function AgeCounter({monthsCounter, handleAgeIncrement}) {
           {years} {years === 1 ? "year" : "years"}
         </span>{" "}
         and{" "}
-        <span className="months">
+        <span className="months" onChange={() => handleCodeyImage(monthsCounter, codeyImages)}>
           {months} {months === 1 ? "month" : "months"}
         </span>{" "}
         old
