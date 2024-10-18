@@ -44,7 +44,7 @@ body {
   color: #17255a;
   font-size: 2rem;
   text-align: center;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Introduction text */
@@ -53,7 +53,7 @@ body {
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 600px;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif
 }
 
 /* Age display section */
@@ -61,26 +61,27 @@ body {
   display: flex;
   color: black;
   font-size: 2.25rem;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
   gap: 10px;
 }
 
 /* Year text is red */
 .years {
   font-weight: bold;
-  color: red;
+  color: #9f3b30;
 }
 
 /* Month text is blue */
 .months {
   font-weight: bold;
-  color: blue;
+  color: #17255a;
 }
 
 /* Button styling */
 .age-btn {
   color: white;
-  width: 300px;
+  width: 250px;
+  height: 50px;
   padding: 10px 20px;
   border-radius: 20px;
   background: linear-gradient(90deg, #9383c5, #56e3fa);
@@ -90,7 +91,7 @@ body {
 }
 
 .age-btn:hover {
-  background-color: #a01717;
+  background-color: #9f3b30;
 }
 .age-btn:active {
   background-color: #3e8e41;
@@ -104,17 +105,27 @@ body {
   flex-direction: row;
   justify-content: end;
   margin-top: 0px;
-  color: #a01717;
+  color: #9f3b30;
   border-color: 0.1px solid #141212;
 }
 .currancy-logo {
   position: fixed;
-  top: 250px;
+  top: 100px;
   right: 200px;
   display: flex;
   flex-direction: column;
   justify-content: end;
   color: #17255a;
   font-weight: bold;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+
+.currency-text {
+  font-size: 60px;
+  font-family: Arial, Helvetica, sans-serif;
 }
