@@ -4,24 +4,117 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #17255a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #f5e2c8;
     --foreground: #ededed;
   }
 }
 
 body {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Wrapper for the age counter */
+.age-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-container {
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 40px; /* Adds space between the header and the counter */
+}
+
+/* Header text */
+.header {
+  color: #17255a;
+  font-size: 2rem;
+  text-align: center;
+  font-family: cursive;
+}
+
+/* Introduction text */
+.intro {
+  color: #17255a;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 600px;
+  font-family: cursive;
+}
+
+/* Age display section */
+.age-display {
+  display: flex;
+  color: black;
+  font-size: 2.25rem;
+  font-family: cursive;
+  gap: 10px;
+}
+
+/* Year text is red */
+.years {
+  font-weight: bold;
+  color: red;
+}
+
+/* Month text is blue */
+.months {
+  font-weight: bold;
+  color: blue;
+}
+
+/* Button styling */
+.age-btn {
+  color: white;
+  width: 300px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #9383c5, #56e3fa);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 70px; /*centering the button under the counter*/
+}
+
+.age-btn:hover {
+  background-color: #a01717;
+}
+.age-btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/*Footer for credits */
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-top: 0px;
+  color: #a01717;
+  border-color: 0.1px solid #141212;
+}
+.currancy-logo {
+  position: fixed;
+  top: 250px;
+  right: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  color: #17255a;
+  font-weight: bold;
+  font-family: cursive;
 }
