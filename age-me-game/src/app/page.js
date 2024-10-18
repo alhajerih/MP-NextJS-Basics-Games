@@ -45,6 +45,16 @@ export default function Home() {
           I'm Codey, and every click helps me grow older. How many years can you
           add to my life?{String.fromCodePoint(0x1f914)}
         </h2>
+
+        <div className="codey-div">
+          <img
+            src="Codey/codey_0.png"
+            alt="Codey"
+            className="codey"
+            width={200}
+            height={200}
+          />
+        </div>
         <div>
           <AgeCounter
             monthsCounter={monthsCounter}
@@ -60,7 +70,9 @@ export default function Home() {
           />
         </div>
 
-        <h2 className="footer">by Janna and Hamad </h2>
+        <div className="footer">
+        <h2>by Janna and Hamad </h2>
+        </div>
       </div>
     </>
   );
