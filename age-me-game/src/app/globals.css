@@ -136,8 +136,8 @@ body {
   justify-content: center;
 }
 .codey {
-  width: 900px; /* Set a fixed width */
-  height: 400px; /* Set a fixed height */
+  width: 900px;
+  height: 400px;
   object-fit: contain;
 }
 /* Modal overlay */
