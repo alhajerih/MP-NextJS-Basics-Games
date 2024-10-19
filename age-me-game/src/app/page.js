@@ -5,8 +5,8 @@ import AgeCounter from "./components/AgeCounter.js";
 import CurrencyCounter from "./components/CurrencyCounter.js";
 import ReloadButton from "./components/ReloadButton.js";
 import EventModal from "./components/EventModal.js";
-import milestones from "./data/milestoneArray.js";
-import choices from "./data/choicesArray.js";
+import milestones from "./data/milestones.js";
+import choices from "./data/choices.js";
 
 export default function Home() {
   const [monthsCounter, setMonthsCounter] = useState(0);

@@ -1,7 +1,7 @@
 // This array defines how the avatar will change from age to age
 const milestones = [
   {
-    // few months old
+    // 5 months old
     id: 0,
     ageInMonths: 5,
     message: "Codey took his first steps!",
@@ -10,7 +10,8 @@ const milestones = [
     // 5 years old
     id: 1,
     ageInMonths: 60,
-    message: "It's Eid! Codey will now collect 200KD from his family members every year until he gets a job",
+    message: "It's Eid! Codey collected 200KD from his family members",
+    price: 200,
   },
   {
     // 15 years old
@@ -20,23 +21,23 @@ const milestones = [
       "Codey got his first part-time job. He will now start earning a salary",
   },
   {
-    // 25 years old
+    // 23 years old
     id: 3,
-    ageInMonths: 300,
+    ageInMonths: 276,
     message: "Codey got a 50KD raise!",
   },
   {
     // 35 years old
     id: 4,
-    ageInMonths: 540,
-    message: "Codey published a bestselling book! He recieves 100,000 KD",
+    ageInMonths: 420,
+    message:
+      "Codey's kids have grown up! He now has more money for himself and his wife.",
   },
   {
     // 45 years old
     id: 5,
-    ageInMonths: 420,
-    message:
-      "Codey's kids have grown up! He now has more money for himself and his wife.",
+    ageInMonths: 540,
+    message: "Codey published a bestselling book! He recieves 100,000 KD",
   },
   {
     // 55 years old
@@ -71,5 +72,4 @@ const milestones = [
     message: "RIP Codey. He will be missed.",
   },
 ];
-
 export default milestones;
