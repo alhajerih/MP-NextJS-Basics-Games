@@ -3,26 +3,19 @@
 import { useState } from "react";
 import codeyImages from "../data/codeyImages";
 
-export default function AgeCounter({
-  monthsCounter,
-  handleAgeIncrement,
-  handleCodeyImage,
-  codeyImages,
-}) {
+export default function AgeCounter({ monthsCounter, handleAgeIncrement }) {
   const years = Math.floor(monthsCounter / 12);
   const months = monthsCounter % 12;
 
   return (
     <div className="age-counter">
       <div className="age-display">
+        Codey is
         <span className="years">
           {years} {years === 1 ? "year" : "years"}
         </span>{" "}
         and{" "}
-        <span
-          className="months"
-          onChange={() => handleCodeyImage(monthsCounter, codeyImages)}
-        >
+        <span className="months">
           {months} {months === 1 ? "month" : "months"}
         </span>{" "}
         old

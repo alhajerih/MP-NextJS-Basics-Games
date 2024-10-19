@@ -1,21 +1,22 @@
 // This array defines the options which will pop up and influence the currency (net worth) either by adding to it or decreasing from it (on top of the passive incrementing)
 
-max = 5000;
-min = -5000;
+const max = 5000;
+const min = -5000;
 
 const choices = [
   {
     id: 1,
-    message:
-      "Codey got his license! Would you like to buy him a car so he can show off his driving skills? ",
-    choiceYes: false, // Flag to keep track of user input
-    price: -20000,
-  },
-  {
-    id: 2,
     message: "Codey is doing well at his job! Should Codey ask for a bonus?",
     choiceYes: false,
     price: 2000,
+  },
+  {
+    id: 2,
+    
+    message:
+      "Codey got his license! Would you like to buy him a car so he can show off his driving skills? ",
+    choiceYes: false, // Flag to keep track of user input
+    price: -10000,
   },
   {
     id: 3,
@@ -59,3 +60,5 @@ const choices = [
     price: 5000,
   },
 ];
+
+export default choices;

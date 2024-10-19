@@ -35,8 +35,8 @@ body {
 
 .header-container {
   text-align: center;
-  padding-top: 20px;
-  margin-bottom: 40px; /* Adds space between the header and the counter */
+  padding-top: 10px;
+  margin-bottom: 30px; /* Adds space between the header and the counter */
 }
 
 /* Header text */
@@ -53,7 +53,7 @@ body {
   font-size: 1.5rem;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 }
 
 /* Age display section */
@@ -79,24 +79,55 @@ body {
 
 /* Button styling */
 .age-btn {
-  color: white;
+  color: #9f3b30;
   width: 250px;
   height: 50px;
   padding: 10px 20px;
   border-radius: 20px;
-  background: linear-gradient(90deg, #9383c5, #56e3fa);
+  background-color: #f5e2c8;
+  border: 2px solid #9f3b30;
+  /* background: linear-gradient(90deg, #9383c5, #56e3fa); */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .age-btn:hover {
   background-color: #9f3b30;
+  color: #f5e2c8;
 }
 .age-btn:active {
-  background-color: #3e8e41;
+  background-color: #CC9890;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.rl-btn {
+  color: #f5e2c8;
+  width: 250px;
+  height: 50px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #9f3b30;
+  border: 2px solid #9f3b30;
+  /* background: linear-gradient(90deg, #9383c5, #56e3fa); */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rl-btn:hover {
+  background-color: #f5e2c8;
+  color: #9f3b30;
+}
+.rl-btn:active {
+  background-color: #CC9890;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.reload-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;}
 
 /*Footer for credits */
 .footer {
@@ -104,7 +135,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
   margin-top: 10px;
-  color: #9f3b30;
+  color: #CC9890;
   border-color: 0.1px solid #141212;
 }
 .currancy-logo {
@@ -184,12 +215,12 @@ body {
 }
 
 .modal-btn.yes {
-  background-color: #4caf50;
+  background-color: #89A8CD;
   color: white;
 }
 
 .modal-btn.no {
-  background-color: #f44336;
+  background-color: #9f3b30;
   color: white;
 }
 
@@ -202,16 +233,16 @@ body {
 }
 /* Game over */
 .game-over-message {
-  color: red;
+  color: #9f3b30;
   font-weight: bold;
   text-align: center;
-
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 2rem;
 }
 .game-over-jail {
-  color: #141212;
+  color: #17255a;
   font-weight: bold;
   text-align: center;
-
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 2rem;
 }

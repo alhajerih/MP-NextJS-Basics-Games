@@ -45,3 +45,5 @@ const codeyImages = [
         src: "Codey/codey_95.png",
     },
 ]
+
+export default codeyImages;

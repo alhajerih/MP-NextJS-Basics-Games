@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import AgeCounter from "./components/AgeCounter.js";
 import CurrencyCounter from "./components/CurrencyCounter.js";
+import ReloadButton from "./components/ReloadButton.js";
 import EventModal from "./components/EventModal.js";
-import milestones from "./data/milestones.js";
-import choices from "./data/choices.js";
+import milestones from "./data/milestoneArray.js";
+import choices from "./data/choicesArray.js";
 
 export default function Home() {
   const [monthsCounter, setMonthsCounter] = useState(0);
@@ -24,54 +25,55 @@ export default function Home() {
     }
   }, [gameOver]);
 
-  function handleCodeyImage(updatedMonthsCounter) {
-    if (updatedMonthsCounter <= 60) {
+  function handleCodeyImage() {
+    if (monthsCounter <= 60) {
       setCodeyImage("Codey/codey_0.png"); // 0 - 5 years (0 - 60 months)
-    } else if (updatedMonthsCounter <= 180) {
+    } else if (monthsCounter <= 180) {
       setCodeyImage("Codey/codey_5.png"); // 5 - 15 years
-    } else if (updatedMonthsCounter <= 300) {
+    } else if (monthsCounter <= 300) {
       setCodeyImage("Codey/codey_15.png"); // 15 - 25 years
-    } else if (updatedMonthsCounter <= 420) {
+    } else if (monthsCounter <= 420) {
       setCodeyImage("Codey/codey_25.png"); // 25 - 35 years
-    } else if (updatedMonthsCounter <= 540) {
+    } else if (monthsCounter <= 540) {
       setCodeyImage("Codey/codey_35.png"); // 35 - 45 years
-    } else if (updatedMonthsCounter <= 660) {
+    } else if (monthsCounter <= 660) {
       setCodeyImage("Codey/codey_45.png"); // 45 - 55 years
-    } else if (updatedMonthsCounter <= 780) {
+    } else if (monthsCounter <= 780) {
       setCodeyImage("Codey/codey_55.png"); // 55 - 65 years
-    } else if (updatedMonthsCounter <= 900) {
+    } else if (monthsCounter <= 900) {
       setCodeyImage("Codey/codey_65.png"); // 65 - 75 years
-    } else if (updatedMonthsCounter <= 1020) {
+    } else if (monthsCounter <= 1020) {
       setCodeyImage("Codey/codey_75.png"); // 75 - 85 years
-    } else if (updatedMonthsCounter <= 1140) {
+    } else if (monthsCounter < 1140) {
       setCodeyImage("Codey/codey_85.png"); // 85 - 95 years
-    } else {
-      setCodeyImage("Codey/codey_95.png"); // 95+ years
+    } else if (monthsCounter == 1140){
+      setCodeyImage("Codey/codey_grave.png"); // dead Codey
     }
   }
 
   // Handle button click to increment age
   const handleAgeIncrement = () => {
     if (!gameOver && monthsCounter <= 1140) {
-      setMonthsCounter(monthsCounter + 1); // Increment by 6 month per click
+      setMonthsCounter(monthsCounter + 3); // Increment by 6 month per click
+      handleCodeyImage();
       handleNetWorth();
       checkForMilestone(); // Check if a milestone event should be triggered
       checkForChoices(); // Check if a choice should be triggered based on age
-      handleCodeyImage(monthsCounter);
+      
     }
   };
 
   // Handles changing currency based on age and other conditions
   function handleNetWorth() {
-    if (monthsCounter === 60) setNetWorth(netWorth + 200); // Eid bonus at 5 years old
+    if (monthsCounter > 60) setNetWorth(netWorth + 200); // Eid bonus at 5 years old
     if (monthsCounter > 180 && monthsCounter < 300) setNetWorth(netWorth + 10); // Part-time job
     if (monthsCounter > 300 && monthsCounter < 420) setNetWorth(netWorth + 60); // Raise at 25
     if (monthsCounter > 420) setNetWorth(netWorth + 1000); // Kids have grown up at 35
     if (monthsCounter === 540) setNetWorth(netWorth + 100000); // Book publishing at 45
-
+    
     if (netWorth < 0) {
       setGameOver(true);
-      // handleCodeyImage(monthsCounter);
+      handleCodeyImage();
     }
   }
 
@@ -93,19 +95,19 @@ export default function Home() {
         case 1:
           return monthsCounter === 240; // 20 years
         case 2:
-          return monthsCounter === 252; // 21 years
+          return monthsCounter === 276; // 23 years
         case 3:
-          return monthsCounter === 300; // 25 years
-        case 4:
           return monthsCounter === 336; // 28 years
-        case 5:
-          return monthsCounter === 360; // 30 years
-        case 6:
-          return monthsCounter === 372; // 31 years
-        case 7:
+        case 4:
           return monthsCounter === 384; // 32 years
+        case 5:
+          return monthsCounter === 480; // 40 years
+        case 6:
+          return monthsCounter === 600; // 50 years
+        case 7:
+          return monthsCounter === 624; // 52 years
         case 8:
-          return monthsCounter === 540; // 45 years
+          return monthsCounter === 720; // 60 years
         default:
           return false;
       }
@@ -129,7 +131,7 @@ export default function Home() {
   // Handle "Yes" choice from the user for choices
   const handleYesChoice = () => {
     if (currentChoice) {
-      setNetWorth(netWorth + currentChoice.price); // Adjust net worth based on the user choice
+      setNetWorth(netWorth + Math.floor(currentChoice.price)); // Adjust net worth based on the user choice
     }
     setShowChoiceModal(false); // Close the modal after choice
   };
@@ -143,16 +145,16 @@ export default function Home() {
     <>
       <div>
         <div className="logo">
-          <img src="game_title.PNG" alt="header" width={300} height={200} />
+          <img src="game_title.PNG" alt="header" width={250} height={150} />
         </div>
 
         <h2 className="intro">
-          I'm Codey, and every click helps me grow older. How many years can you
-          add to my life?{String.fromCodePoint(0x1f914)}
+          This is Codey, and every click helps him grow older. How many years can you
+          add to his life?{String.fromCodePoint(0x1f914)}
         </h2>
         {gameOver && <h2 className="game-over-message">Game Over!</h2>}
         {gameOver && (
-          <h2 className="game-over-jail">You are in the Jail now.</h2>
+          <h2 className="game-over-jail">Code is in JAIL for unpaid debt!</h2>
         )}
 
         <div className="codey-div">
@@ -162,7 +164,7 @@ export default function Home() {
             className="codey"
             width={200}
             height={200}
-            style={{ objectFit: "contain" }}
+            style={{ objectFit: "contain", maxWidth:'200px', maxHeight:'400px' }}
           />
         </div>
 
@@ -171,16 +173,21 @@ export default function Home() {
             monthsCounter={monthsCounter}
             handleAgeIncrement={handleAgeIncrement}
             isDisabled={gameOver}
+            handleCodeyImage={handleCodeyImage}
           />
+        </div>
+
+        <div className="reload-div">
+          <ReloadButton />
         </div>
 
         <div className="currancy-logo">
           <CurrencyCounter netWorth={netWorth} />
-          <img
+          {/* <img
             style={{ width: 100, height: 100 }}
             src="boat.png"
             alt="Tiny Logo"
-          />
+          /> */}
         </div>
 
         {/* Milestone Event Modal */}
