@@ -1,16 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import codeyImages from "../data/codeyImages";
 
-export default function AgeCounter() {
-  const [monthsCounter, setMonthsCounter] = useState(0);
-
-  // Handle button click to increment age
-  const handleAgeIncrement = () => {
-    setMonthsCounter(monthsCounter + 1); // Increment by one month per click
-  };
-
-  // Calculate years and months from total months
+export default function AgeCounter({
+  monthsCounter,
+  handleAgeIncrement,
+  handleCodeyImage,
+  codeyImages,
+}) {
   const years = Math.floor(monthsCounter / 12);
   const months = monthsCounter % 12;
 
@@ -21,7 +19,10 @@ export default function AgeCounter() {
           {years} {years === 1 ? "year" : "years"}
         </span>{" "}
         and{" "}
-        <span className="months">
+        <span
+          className="months"
+          onChange={() => handleCodeyImage(monthsCounter, codeyImages)}
+        >
           {months} {months === 1 ? "month" : "months"}
         </span>{" "}
         old
