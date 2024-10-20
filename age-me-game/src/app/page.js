@@ -17,11 +17,23 @@ export default function Home() {
   const [currentEvent, setCurrentEvent] = useState(null);
   const [currentChoice, setCurrentChoice] = useState(null); // state for choice
   const [gameOver, setGameOver] = useState(false); //tracking the networth
+  const [transitionClass, setTransitionClass] = useState("");
 
   //Handle codey broke img
   useEffect(() => {
     if (gameOver) {
       setCodeyImage("Codey/codey_jail.png");
+      setTransitionClass("dramatic-loss");
+
+      // Remove the class after the animation completes
+      const timer = setTimeout(() => {
+        setTransitionClass("");
+      }, 1000); // Match this duration with the combined animation duration
+
+      return () => clearTimeout(timer);
+    } else {
+      // Just update the image without the dramatic effect
+      setTransitionClass("");
     }
   }, [gameOver]);
 
@@ -153,14 +165,14 @@ export default function Home() {
         </h2>
         {gameOver && <h2 className="game-over-message">Game Over!</h2>}
         {gameOver && (
-          <h2 className="game-over-jail">Code is in JAIL for unpaid debt!</h2>
+          <h2 className="game-over-jail">Codey is in JAIL for unpaid debt!</h2>
         )}
 
         <div className="codey-div">
           <img
             src={codeyImage}
             alt="Codey"
-            className="codey"
+            className={`codey ${transitionClass}`}
             width={200}
             height={200}
             style={{
@@ -214,7 +226,7 @@ export default function Home() {
           />
         )}
 
-        <div className="footer">
+        <div className="footer" onClick={() => setGameOver(true)} style={{ cursor: "pointer" }}>
           <h2>by Janna and Hamad</h2>
         </div>
       </div>
