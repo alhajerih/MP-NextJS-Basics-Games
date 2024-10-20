@@ -7,7 +7,7 @@ const choices = [
     message:
       "Codey got his license! Would you like to buy him a car so he can show off his driving skills? ",
     choiceYes: false,
-    price: -20000,
+    price: -10000,
   },
   /* when he get 21 years old */
   {
@@ -22,7 +22,7 @@ const choices = [
     message:
       "It's time to think about his future. Would you like Codey to invest in CODED stock?",
     choiceYes: false,
-    price: Math.floor(Math.random() * (5000 - -5000) + -5000),
+    price: Math.floor(Math.random() * (10000 - -10000) + -10000),
   },
   /* when he get 28 years old */
   {
@@ -30,7 +30,7 @@ const choices = [
     message:
       "Codey would like to get married. He must now pay for the wedding.",
     choiceYes: false,
-    price: -50000,
+    price: -100000,
   },
   /* when he get 30 years old */
   {
@@ -45,7 +45,7 @@ const choices = [
     message:
       "Codey would like financial freedom to spend more time with his family. Should he start a business?",
     choiceYes: false,
-    price: Math.floor(Math.random() * (5000 - -5000) + -5000),
+    price: Math.floor(Math.random() * (10000 - -10000) + -10000),
   },
   /* when he get 32 years old */
   {
@@ -53,7 +53,7 @@ const choices = [
     message:
       "Oh no! Codey is getting sued for money laundering. He must pay a fine or battle in court.",
     choiceYes: false,
-    price: Math.floor(Math.random() * (5000 - -5000) + -5000),
+    price: Math.floor(Math.random() * (10000 - -10000) + -10000),
   },
   /* when he get 45 years old */
   {

@@ -46,7 +46,7 @@ export default function Home() {
       setCodeyImage("Codey/codey_75.png"); // 75 - 85 years
     } else if (monthsCounter < 1140) {
       setCodeyImage("Codey/codey_85.png"); // 85 - 95 years
-    } else if (monthsCounter == 1140){
+    } else if (monthsCounter == 1140) {
       setCodeyImage("Codey/codey_grave.png"); // dead Codey
     }
   }
@@ -59,18 +59,17 @@ export default function Home() {
       handleNetWorth();
       checkForMilestone(); // Check if a milestone event should be triggered
       checkForChoices(); // Check if a choice should be triggered based on age
-      
     }
   };
 
   // Handles changing currency based on age and other conditions
   function handleNetWorth() {
     if (monthsCounter > 60) setNetWorth(netWorth + 200); // Eid bonus at 5 years old
-    if (monthsCounter > 180 && monthsCounter < 300) setNetWorth(netWorth + 10); // Part-time job
-    if (monthsCounter > 300 && monthsCounter < 420) setNetWorth(netWorth + 60); // Raise at 25
+    if (monthsCounter > 180 && monthsCounter < 276) setNetWorth(netWorth + 500); // Part-time job until 23
+    if (monthsCounter > 276 && monthsCounter < 420) setNetWorth(netWorth + 550); // Raise at 23
     if (monthsCounter > 420) setNetWorth(netWorth + 1000); // Kids have grown up at 35
-    if (monthsCounter === 540) setNetWorth(netWorth + 100000); // Book publishing at 45
-    
+    if (monthsCounter === 540) setNetWorth(netWorth + 50000); // Book publishing at 45
+
     if (netWorth < 0) {
       setGameOver(true);
       handleCodeyImage();
@@ -95,7 +94,7 @@ export default function Home() {
         case 1:
           return monthsCounter === 240; // 20 years
         case 2:
-          return monthsCounter === 276; // 23 years
+          return monthsCounter === 312; // 26 years
         case 3:
           return monthsCounter === 336; // 28 years
         case 4:
@@ -149,8 +148,8 @@ export default function Home() {
         </div>
 
         <h2 className="intro">
-          This is Codey, and every click helps him grow older. How many years can you
-          add to his life?{String.fromCodePoint(0x1f914)}
+          This is Codey, and every click helps him grow older. How many years
+          can you add to his life?{String.fromCodePoint(0x1f914)}
         </h2>
         {gameOver && <h2 className="game-over-message">Game Over!</h2>}
         {gameOver && (
@@ -164,7 +163,11 @@ export default function Home() {
             className="codey"
             width={200}
             height={200}
-            style={{ objectFit: "contain", maxWidth:'200px', maxHeight:'400px' }}
+            style={{
+              objectFit: "contain",
+              // maxWidth: "200px",
+              maxHeight: "300px",
+            }}
           />
         </div>
 

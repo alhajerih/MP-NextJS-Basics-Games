@@ -24,7 +24,7 @@ const milestones = [
     // 23 years old
     id: 3,
     ageInMonths: 276,
-    message: "Codey got a 50KD raise!",
+    message: "Codey got a 50 KD raise!",
   },
   {
     // 35 years old
