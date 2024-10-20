@@ -10,7 +10,7 @@ const milestones = [
     // 5 years old
     id: 1,
     ageInMonths: 60,
-    message: "It's Eid! Codey collected 200KD from his family members",
+    message: "It's Eid! Codey will start collecting 200KD from his family members every year!",
     price: 200,
   },
   {
@@ -37,7 +37,7 @@ const milestones = [
     // 45 years old
     id: 5,
     ageInMonths: 540,
-    message: "Codey published a bestselling book! He recieves 100,000 KD",
+    message: "Codey published a bestselling book! He recieves 50,000 KD",
   },
   {
     // 55 years old

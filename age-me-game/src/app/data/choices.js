@@ -28,7 +28,7 @@ const choices = [
   {
     id: 4,
     message:
-      "Codey would like to get married. He must now pay for the wedding.",
+      "Codey would like to get married. He must now pay for the wedding. Should he?",
     choiceYes: false,
     price: -100000,
   },

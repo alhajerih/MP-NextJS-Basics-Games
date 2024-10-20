@@ -18,6 +18,8 @@ export default function Home() {
   const [currentChoice, setCurrentChoice] = useState(null); // state for choice
   const [gameOver, setGameOver] = useState(false); //tracking the networth
   const [transitionClass, setTransitionClass] = useState("");
+  const [isActive, setIsActive] = useState(false); // Passive income condition
+  const [intervalId, setIntervalId] = useState(null); // Store the interval ID for passive income
 
   //Handle codey broke img
   useEffect(() => {
@@ -36,6 +38,19 @@ export default function Home() {
       setTransitionClass("");
     }
   }, [gameOver]);
+
+  useEffect(() => {
+    if (monthsCounter > 0 && !intervalId) {
+      startPassiveIncome(); // Start passive income after 5 years
+    }
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        setIntervalId(null);
+      }
+    };
+  }, [monthsCounter]);
 
   function handleCodeyImage() {
     if (monthsCounter <= 60) {
@@ -74,13 +89,48 @@ export default function Home() {
     }
   };
 
+  function startPassiveIncome() {
+    setIsActive(true);
+    const id = setInterval(() => {
+      if (isActive) {
+        setNetWorth((prevNetWorth) => prevNetWorth + 1); // Passive income increments every second
+      }
+    }, 1000); // 1000 ms = 1 second
+    setIntervalId(id); // Store the interval ID to allow stopping it later
+  }
+
+  function stopPassiveIncome() {
+    setIsActive(false); // Stop income
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null); // Clear interval when stopping
+    }
+  }
+
   // Handles changing currency based on age and other conditions
   function handleNetWorth() {
-    if (monthsCounter > 60) setNetWorth(netWorth + 200); // Eid bonus at 5 years old
-    if (monthsCounter > 180 && monthsCounter < 276) setNetWorth(netWorth + 500); // Part-time job until 23
+    if (monthsCounter > 0 && monthsCounter <= 180) {
+      startPassiveIncome(); // Start passive income after 5 years, and continue until retirement at 55
+    }
+
+    if (monthsCounter > 180) {
+      stopPassiveIncome(); // Stop passive income
+    }
+
+    if (monthsCounter > 60) {
+      setNetWorth(netWorth + 200);
+    } // Eid bonus at 5 years old
+    if (monthsCounter > 180 && monthsCounter < 276) {
+      setNetWorth(netWorth + 500);
+    } // Part-time job until 23
     if (monthsCounter > 276 && monthsCounter < 420) setNetWorth(netWorth + 550); // Raise at 23
     if (monthsCounter > 420) setNetWorth(netWorth + 1000); // Kids have grown up at 35
-    if (monthsCounter === 540) setNetWorth(netWorth + 50000); // Book publishing at 45
+    if (monthsCounter === 540) setNetWorth(netWorth + 50000); // Book publishing at 45, no more investment income
+    if (monthsCounter > 660) setNetWorth(netWorth + 200); // Retiring at 55
+    if (monthsCounter > 780) setNetWorth(netWorth - 500000); // Terminal illness at 65
+    if (monthsCounter > 900) setNetWorth(netWorth + 200000); // Selling house at 75
+    if (monthsCounter > 1020) setNetWorth(netWorth - 100000); // Donating at 85
+    if (monthsCounter > 1140) setNetWorth(netWorth - netWorth); // Dead at 95
 
     if (netWorth < 0) {
       setGameOver(true);
@@ -226,7 +276,11 @@ export default function Home() {
           />
         )}
 
-        <div className="footer" onClick={() => setGameOver(true)} style={{ cursor: "pointer" }}>
+        <div
+          className="footer"
+          onClick={() => setGameOver(true)}
+          style={{ cursor: "pointer" }}
+        >
           <h2>by Janna and Hamad</h2>
         </div>
       </div>
