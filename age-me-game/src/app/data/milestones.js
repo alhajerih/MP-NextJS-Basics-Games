@@ -50,14 +50,14 @@ const milestones = [
     // 65 years old
     id: 7,
     ageInMonths: 780,
-    message:
-      "Codey got diagnosed with a terminal illness. He will need to spend money on medication.",
+    message: "Codey sold his house and will now live in a retirement home.",
   },
   {
     // 75 years old
     id: 8,
     ageInMonths: 900,
-    message: "Codey sold his house and will now live in a retirement home.",
+    message:
+      "Codey got diagnosed with a terminal illness. He will need to spend money on medication.",
   },
   {
     // 85 years old

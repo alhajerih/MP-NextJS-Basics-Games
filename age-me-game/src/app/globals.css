@@ -35,8 +35,8 @@ body {
 
 .header-container {
   text-align: center;
-  padding-top: 10px;
-  margin-bottom: 30px; /* Adds space between the header and the counter */
+  /* padding-top: 10px; */
+  margin-bottom: 10px; /* Adds space between the header and the counter */
 }
 
 /* Header text */
@@ -53,7 +53,7 @@ body {
   font-size: 1.5rem;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 /* Age display section */
@@ -201,11 +201,108 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .codey {
+  position: relative;
+  z-index: -1;
   width: 900px;
   height: 400px;
   object-fit: contain;
   transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* purchase stuff starts here  */
+
+.purchase-prop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* Layer purchase over Codey */
+}
+
+/* purchase menu styles */
+.purchase-menu {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  border-radius: 20px;
+  top: 33%;
+  right: 10%;
+  width: 300px;
+  background-color: #f5eee4;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.purchase-menu h3 {
+  text-align: center;
+  color: #17255a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.purchase-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.purchase-item img {
+  width: 50px;
+  height: 50px;
+}
+
+.purchase-item button {
+  background-color: #89A8CD;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.purchase-item button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.purchase-item p {
+  margin: 0 10px;
+  color: #17255a;
+}
+
+.purchase-inventory {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  border-radius: 20px;
+  top: 33%;
+  left: 10%;
+  width: 300px;
+  background-color: #f5eee4;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.purchase-grid {
+  display: flex;
+  flex-wrap: wrap; /* Items will wrap when there's no space */
+  gap: 10px; /* Space between items */
+}
+
+.purchase-inventory h3 {
+  text-align: center;
+  color: #17255a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.purchase-i {
+  width: 50px; /* Each purchase item has a fixed width */
+  height: 50px;
 }
 
 .codey.dramatic-loss {

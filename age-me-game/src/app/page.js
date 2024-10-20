@@ -7,6 +7,8 @@ import ReloadButton from "./components/ReloadButton.js";
 import EventModal from "./components/EventModal.js";
 import milestones from "./data/milestones.js";
 import choices from "./data/choices.js";
+import PurchaseMenu from "./components/PurchaseMenu.js";
+import PurchaseInventory from "./components/PurchaseInventory.js";
 
 export default function Home() {
   const [monthsCounter, setMonthsCounter] = useState(0);
@@ -20,6 +22,8 @@ export default function Home() {
   const [transitionClass, setTransitionClass] = useState("");
   const [isActive, setIsActive] = useState(false); // Passive income condition
   const [intervalId, setIntervalId] = useState(null); // Store the interval ID for passive income
+  const [purchaseProps, setPurchaseProps] = useState([]); // Track clothing items applied to Codey
+
 
   //Handle codey broke img
   useEffect(() => {
@@ -78,10 +82,28 @@ export default function Home() {
     }
   }
 
+  const handlePurchase = (item) => {
+    if (netWorth >= item.price) {
+      setNetWorth((prevNetWorth) => prevNetWorth - item.price);
+      setPurchaseProps((prevPurchase) => [...prevPurchase, item.img]); 
+    }
+  };
+
+  // const renderCodeywithPurchase = () => {
+  //   return (
+  //     <div className="codey-div">
+  //       <img src={codeyImage} alt="Codey" className={`codey ${transitionClass}`} width={200} height={200} />
+  //       {clothingProps.map((clothing, index) => (
+  //         <img key={index} src={clothing} alt="Clothing" className="clothing-prop" width={75} height={75} style={{ position: 'absolute', top: 600, left: 700, zIndex: 1 }} />
+  //       ))}
+  //     </div>
+  //   );
+  // };
+
   // Handle button click to increment age
   const handleAgeIncrement = () => {
     if (!gameOver && monthsCounter <= 1140) {
-      setMonthsCounter(monthsCounter + 3); // Increment by 6 month per click
+      setMonthsCounter(monthsCounter + 6); // Increment by 6 month per click
       handleCodeyImage();
       handleNetWorth();
       checkForMilestone(); // Check if a milestone event should be triggered
@@ -127,8 +149,8 @@ export default function Home() {
     if (monthsCounter > 420) setNetWorth(netWorth + 1000); // Kids have grown up at 35
     if (monthsCounter === 540) setNetWorth(netWorth + 50000); // Book publishing at 45, no more investment income
     if (monthsCounter > 660) setNetWorth(netWorth + 200); // Retiring at 55
-    if (monthsCounter > 780) setNetWorth(netWorth - 500000); // Terminal illness at 65
-    if (monthsCounter > 900) setNetWorth(netWorth + 200000); // Selling house at 75
+    if (monthsCounter > 780) setNetWorth(netWorth + 200000); // Selling house at 65
+    if (monthsCounter > 900) setNetWorth(netWorth - 100000); // Terminal illness at 75
     if (monthsCounter > 1020) setNetWorth(netWorth - 100000); // Donating at 85
     if (monthsCounter > 1140) setNetWorth(netWorth - netWorth); // Dead at 95
 
@@ -154,7 +176,7 @@ export default function Home() {
     const choice = choices.find((choice) => {
       switch (choice.id) {
         case 1:
-          return monthsCounter === 240; // 20 years
+          return monthsCounter === 252; // 20 years
         case 2:
           return monthsCounter === 312; // 26 years
         case 3:
@@ -164,11 +186,7 @@ export default function Home() {
         case 5:
           return monthsCounter === 480; // 40 years
         case 6:
-          return monthsCounter === 600; // 50 years
-        case 7:
-          return monthsCounter === 624; // 52 years
-        case 8:
-          return monthsCounter === 720; // 60 years
+          return monthsCounter === 720; // 50 years
         default:
           return false;
       }
@@ -218,7 +236,10 @@ export default function Home() {
           <h2 className="game-over-jail">Codey is in JAIL for unpaid debt!</h2>
         )}
 
+          
+
         <div className="codey-div">
+        {/* {renderCodeywithPurchase()}  */}
           <img
             src={codeyImage}
             alt="Codey"
@@ -254,6 +275,13 @@ export default function Home() {
             alt="Tiny Logo"
           /> */}
         </div>
+
+        <div className="menu-div">
+        <PurchaseMenu netWorth={netWorth} handlePurchase={handlePurchase} />
+
+        <PurchaseInventory purchaseProps={purchaseProps} />
+        </div>
+
 
         {/* Milestone Event Modal */}
         {showEventModal && (
